@@ -1,5 +1,6 @@
 Event Messaging System
 =====================
+![Event Messaging System Introduction Header Image](https://i.imgur.com/FiNtGH2.png)
 
 Event Messaging System is a plugin for Unreal Engine 4.26. It allows C++ and Blueprint actors to call events on each other without having soft or hard reference links, but instead by using actor tags and class filters. All events are called in a static way from anywhere in C++ or Blueprints.
 
