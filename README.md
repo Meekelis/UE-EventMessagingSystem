@@ -14,6 +14,9 @@ The code is very well documented, you should be able to use it and extend is as 
 2. A player dies and a multicast event "OnPlayerDead" is sent to all game systems that have implemented a behavior for it.
 3. In an architectural demo, a light switch is flipped, and it sends "TurnLightsOn" event to all blueprints of lights.
 
-## Demo video
+## Tutorial video
 
 (coming soon)
+
+## Download
+See the [release page](https://github.com/Meekelis/UE-EventMessagingSystem/releases/) to download production-ready versions of this plugin: https://github.com/Meekelis/UE-EventMessagingSystem/releases/.
