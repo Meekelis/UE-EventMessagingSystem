@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "EventMessagingSystem",
+	"Description": "A system for communicating between UObjects by dynamic broadcasts.",
+	"Category": "Other",
+	"CreatedBy": "Kazimieras Mikelis",
+	"CreatedByURL": "https://mikelis.net/",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "EventMessagingSystem",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
