@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.0",
+	"VersionName": "1.1",
 	"FriendlyName": "Event Messaging System",
 	"Description": "This system allows actors to call events on each other without having soft or hard reference links, but instead by using tags and class filters. All events are called in a static way from anywhere in C++ or Blueprints. Event messages have data payloads in key - value pairs. ",
 	"Category": "Programming",
