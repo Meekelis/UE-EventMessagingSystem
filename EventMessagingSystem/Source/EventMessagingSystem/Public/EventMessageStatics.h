@@ -8,8 +8,18 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "EventMessageStatics.generated.h"
 
+// A stat group for profiling event messages. Run command "stat EventMessaging" to show on screen.
+DECLARE_STATS_GROUP(TEXT("EventMessaging"), STATGROUP_EventMessaging, STATCAT_Advanced);
+
+// Cycle stat probing how long event message routing takes.
+DECLARE_CYCLE_STAT(TEXT("Routing"), STAT_Routing, STATGROUP_EventMessaging);
+
+// Cycle stat probing how long the retrieval of every world actor takes.
+DECLARE_CYCLE_STAT(TEXT("Actor query"), STAT_ActorQuery, STATGROUP_EventMessaging); 
+
 /**
- * 
+ * A static library of functions for sending and processing event messages.
+ * This class is all that is needed to send event messages to objects that implement the EventMessageReceiver interface.
  */
 UCLASS()
 class EVENTMESSAGINGSYSTEM_API UEventMessageStatics : public UBlueprintFunctionLibrary
@@ -143,6 +153,10 @@ public:
 
 private:
 
+
+	/**
+	 * A function to get world actors faster than Unreal Engine's default ones.
+	 */
 	static void GetWorldActorsFast(UObject * WorldContext, TArray<AActor*> & OutActors);
 	
 };

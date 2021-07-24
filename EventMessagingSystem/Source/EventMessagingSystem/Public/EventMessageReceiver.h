@@ -25,7 +25,18 @@ public:
 
 	/**
 	 * Event that gets called when this actor receives an event message.
+	 * @param EventName		The received event name.
+	 * @param Sender			The sender object of this message. If sent from Blueprint, it will be the graph owner.
+	 * @param Payload		The optional message payload with key-value data pairs.
 	 */
-	UFUNCTION(BlueprintImplementableEvent)
+	UFUNCTION(BlueprintNativeEvent)
 	void OnEventMessageReceived(FName EventName, UObject * Sender, FMessagePayload Payload);
+
+	/**
+	* A native event that gets called when this actor receives an event message.
+	* @param EventName		The received event name.
+	* @param Sender			The sender object of this message. If sent from Blueprint, it will be the graph owner.
+	* @param Payload		The optional message payload with key-value data pairs.
+	*/
+	virtual void OnEventMessageReceived_Implementation(FName EventName, UObject * Sender, FMessagePayload Payload) {}
 };

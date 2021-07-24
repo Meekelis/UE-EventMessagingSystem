@@ -4,6 +4,7 @@
 
 #include "EventMessageReceiver.h"
 
+// Macro to implement message payload getters and setters faster.
 #define DEFINE_MESSAGE_PAYLOAD_GETTER_SETTER(FuncName, TypeName) \
 	TypeName UEventMessageStatics::Get##FuncName##Payload_BP(const FMessagePayload& Payload, const FName PropertyName) \
 	{ \
@@ -29,6 +30,8 @@ FMessagePayload UEventMessageStatics::MakeLiteralEventMessagePayload()
 void UEventMessageStatics::SendEventMessageByTag(UObject* Sender, const FName ReceiverActorTag, const FName EventName,
                                                  const FMessagePayload Payload)
 {
+	SCOPE_CYCLE_COUNTER(STAT_Routing);
+	
 	TArray<AActor*> WorldActors;
 	GetWorldActorsFast(Sender, WorldActors);
 
@@ -47,6 +50,8 @@ void UEventMessageStatics::SendEventMessageByTag(UObject* Sender, const FName Re
 void UEventMessageStatics::SendEventMessageByClass(UObject* Sender, UClass* ReceiverClass, const FName EventName,
                                                    const FMessagePayload Payload)
 {
+	SCOPE_CYCLE_COUNTER(STAT_Routing);
+	
 	TArray<AActor*> WorldActors;
 	GetWorldActorsFast(Sender, WorldActors);
 
@@ -65,6 +70,8 @@ void UEventMessageStatics::SendEventMessageByClass(UObject* Sender, UClass* Rece
 
 void UEventMessageStatics::SendMulticastEventMessage(UObject* Sender, const FName EventName, const FMessagePayload Payload)
 {
+	SCOPE_CYCLE_COUNTER(STAT_Routing);
+	
 	TArray<AActor*> WorldActors;
 	GetWorldActorsFast(Sender, WorldActors);
 	
@@ -79,6 +86,8 @@ void UEventMessageStatics::SendMulticastEventMessage(UObject* Sender, const FNam
 
 void UEventMessageStatics::GetWorldActorsFast(UObject* WorldContext, TArray<AActor*>& OutActors)
 {
+	SCOPE_CYCLE_COUNTER(STAT_ActorQuery);
+	
 	OutActors.Empty(512); // This magic number cuts down on memcpy operations. 
 
 	// Attempt to get world from context.
