@@ -1,7 +1,7 @@
 {
-	"BuildId": "14830424",
+	"BuildId": "17155196",
 	"Modules": 
 	{
-		"EventMessagingSystem": "UE4Editor-EventMessagingSystem-0007.dll"
+		"EventMessagingSystem": "UE4Editor-EventMessagingSystem.dll"
 	}
 }

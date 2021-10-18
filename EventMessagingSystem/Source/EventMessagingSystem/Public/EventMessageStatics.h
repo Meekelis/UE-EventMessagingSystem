@@ -69,6 +69,22 @@ public:
     static UObject * GetObjectPayload_BP(const FMessagePayload & Payload, FName PropertyName);
 
 	/**
+	* Get a value of vector property from an event message payload.
+	* @param Payload		The payload where this property is contained.
+	* @param PropertyName	The name of this property.
+	*/
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Vector Payload"))
+	static FVector GetVectorPayload_BP(const FMessagePayload& Payload, FName PropertyName);
+
+	/**
+	* Get a value of a float property from an event message payload.
+	* @param Payload		The payload where this property is contained.
+	* @param PropertyName	The name of this property.
+	*/
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Get Float Payload"))
+	static float GetFloatPayload_BP(const FMessagePayload& Payload, FName PropertyName);
+
+	/**
 	 * Add a property of integer type to this event message payload.
 	 * @param Payload		The payload to which this property should be appended.
 	 * @param PropertyName	The name of this property.
@@ -112,6 +128,24 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, meta=(DisplayName="Add Object To Payload"))
     static FMessagePayload AddObjectPayload_BP(FMessagePayload Payload, FName PropertyName, UObject * Value);
+
+	/**
+	* Add a property of vector type to this event message payload.
+	* @param Payload		The payload to which this property should be appended.
+	* @param PropertyName	The name of this property.
+	* @param Value			The value of this property.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Add Vector To Payload"))
+	static FMessagePayload AddVectorPayload_BP(FMessagePayload Payload, FName PropertyName, FVector Value);
+
+	/**
+	* Add a property of float type to this event message payload.
+	* @param Payload		The payload to which this property should be appended.
+	* @param PropertyName	The name of this property.
+	* @param Value			The value of this property.
+	*/
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Add Object To Payload"))
+	static FMessagePayload AddFloatPayload_BP(FMessagePayload Payload, FName PropertyName, float Value);
 
 	/**
 	 * Make an empty payload object to be filled with Add To Payload functions.

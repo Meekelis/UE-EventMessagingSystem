@@ -16,12 +16,16 @@ struct FMessagePayloadProperty
 	FMessagePayloadProperty(const FName & NamePayload) : NamePayload(NamePayload) {}
 	FMessagePayloadProperty(const uint8 BytePayload) : BytePayload(BytePayload) {}
 	FMessagePayloadProperty(const FString & StringPayload) : StringPayload(StringPayload) {}
+	FMessagePayloadProperty(const FVector& VectorPayload) : VectorPayload(VectorPayload) {}
+	FMessagePayloadProperty(const float & FloatPayload) : FloatPayload(FloatPayload) {}
 	
 	int32 IntPayload = 0;								// Integer payload (if present)
 	TWeakObjectPtr<UObject> ObjectPayload = nullptr;	// Object payload (if present)
 	FName NamePayload = NAME_None;						// Name payload (if present)
 	uint8 BytePayload = 0x0;							// Byte payload (if present)
 	FString StringPayload = FString();					// String payload (if present)
+	FVector VectorPayload = FVector::ZeroVector;		// Vector payload (if present)
+	float FloatPayload = 0.f;							// Float payload (if present)
 };
 
 /**
@@ -104,5 +108,29 @@ struct FMessagePayload
 			}
 		}
 		return nullptr;
+	}
+
+	/**
+	* Get a Vector property value from this payload by property name.
+	*/
+	FVector GetVectorProperty(const FName& Name) const
+	{
+		if (Properties.Contains(Name))
+		{
+			return Properties[Name].VectorPayload;
+		}
+		return FVector::ZeroVector;
+	}
+
+	/**
+	* Get a float property value from this payload by property name.
+	*/
+	float GetFloatProperty(const FName& Name) const
+	{
+		if (Properties.Contains(Name))
+		{
+			return Properties[Name].FloatPayload;
+		}
+		return 0.f;
 	}
 };
